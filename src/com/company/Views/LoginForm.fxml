@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="loginPane" prefHeight="750.0" prefWidth="1200.0" stylesheets="/com/company/CSS/style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.Controllers.LoginController">
+   <children>
+      <Label fx:id="mainLabel" layoutX="418.0" layoutY="121.0" prefHeight="139.0" prefWidth="377.0" styleClass="slideInUp" text="Witaj!&#10;Zaloguj się do aplikacji." textAlignment="CENTER">
+         <font>
+            <Font name="Arial" size="36.0" />
+         </font></Label>
+      <TextField id="loginField" fx:id="login" alignment="TOP_CENTER" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="500.0" layoutY="281.0" prefHeight="42.0" prefWidth="200.0" promptText="LOGIN" scaleShape="false">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></TextField>
+      <PasswordField id="loginField" fx:id="password" focusTraversable="false" layoutX="500.0" layoutY="343.0" prefHeight="42.0" prefWidth="200.0" promptText="HASŁO">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></PasswordField>
+      <CheckBox fx:id="clientCheckBox" layoutX="501.0" layoutY="427.0" mnemonicParsing="false" onAction="#onClientCheckBox" text="Klient">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font></CheckBox>
+      <CheckBox fx:id="employeeCheckBox" layoutX="606.0" layoutY="427.0" mnemonicParsing="false" onAction="#onEmployeeCheckBox" text="Pracownik">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font></CheckBox>
+      <Button id="myButton" fx:id="loginButton" layoutX="625.0" layoutY="492.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="42.0" prefWidth="110.0" text="Zaloguj się">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Label fx:id="errorLabel" alignment="TOP_CENTER" layoutX="498.0" layoutY="385.0" prefHeight="32.0" prefWidth="204.0" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Button id="myButton" fx:id="createClient" layoutX="465.0" layoutY="492.0" mnemonicParsing="false" onAction="#onCreateClientButton" prefHeight="42.0" prefWidth="120.0" text="Utwórz konto">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

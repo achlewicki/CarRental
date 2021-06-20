@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<TabPane fx:id="setAddress" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" stylesheets="/com/company/CSS/style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.Controllers.ClientController">
+    <tabs>
+      <Tab text="Strona Główna">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="450.0" layoutY="67.0" text="Twoje Zamówienia">
+                     <font>
+                        <Font name="Arial" size="36.0" />
+                     </font></Label>
+                  <TableView fx:id="ordersTable" layoutX="14.0" layoutY="125.0" prefHeight="510.0" prefWidth="1179.0">
+                     <columns>
+                        <TableColumn fx:id="idResCol" maxWidth="23.0" minWidth="23.0" prefWidth="23.0" resizable="false" text="Nr" />
+                        <TableColumn fx:id="brandResCol" maxWidth="86.0" minWidth="52.0" prefWidth="86.0" resizable="false" text="Marka" />
+                        <TableColumn fx:id="modelResCol" maxWidth="120.00003051757812" minWidth="80.0" prefWidth="92.0" resizable="false" text="Model" />
+                        <TableColumn fx:id="startDateCol" maxWidth="125.99996948242188" minWidth="78.99998474121094" prefWidth="90.0" resizable="false" text="Start" />
+                        <TableColumn fx:id="endDateCol" maxWidth="143.0" minWidth="80.0" prefWidth="97.0" resizable="false" text="Koniec" />
+                        <TableColumn fx:id="bailCol" maxWidth="187.0" minWidth="53.0" prefWidth="85.0" resizable="false" text="Opłacone" />
+                        <TableColumn fx:id="contactCol" maxWidth="365.0" minWidth="85.0" prefWidth="297.0" resizable="false" text="Kontakt z pracownikiem" />
+                        <TableColumn fx:id="commentCol" maxWidth="435.0" minWidth="98.0" prefWidth="269.0" resizable="false" text="Komentarz" />
+                        <TableColumn fx:id="statusCol" maxWidth="383.0" minWidth="98.0" prefWidth="138.0" resizable="false" text="Potwierdzone" />
+                     </columns>
+                  </TableView>
+                  <Label fx:id="helloMsg" layoutX="156.0" layoutY="50.0" />
+                  <Button id="myButton" fx:id="logout" layoutX="1077.0" layoutY="666.0" mnemonicParsing="false" onAction="#onLogoutButton" text="Wyloguj się">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font></Button>
+               </children></AnchorPane>
+        </content>
+      </Tab>
+        <Tab text="Zarezerwuj Samochód">
+            <content>
+                <AnchorPane fx:id="clientPane" prefHeight="750.0" prefWidth="1200.0">
+                   <children>
+                      <Button id="myButton" fx:id="searchButton" layoutX="203.0" layoutY="627.0" mnemonicParsing="false" onAction="#onSearchButtonAction" prefHeight="39.0" prefWidth="71.0" text="Szukaj">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font></Button>
+                      <TextField fx:id="brandFilter" alignment="TOP_CENTER" layoutX="78.0" layoutY="186.0" promptText="MARKA" AnchorPane.leftAnchor="78.0" AnchorPane.topAnchor="186.0">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font></TextField>
+                      <TextField fx:id="modelFilter" alignment="CENTER" layoutX="78.0" layoutY="239.0" promptText="MODEL" AnchorPane.leftAnchor="78.0" AnchorPane.topAnchor="246.0">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font></TextField>
+                      <Slider fx:id="fromSlider" layoutX="58.0" layoutY="445.0" onDragEntered="#onFromSliderAction" onMouseDragEntered="#onFromSliderAction" onMouseMoved="#onFromSliderAction" onSwipeLeft="#onFromSliderAction" onSwipeRight="#onFromSliderAction" prefHeight="14.0" prefWidth="190.0" AnchorPane.topAnchor="445.0" />
+                      <ChoiceBox fx:id="currencyFilter" layoutX="115.0" layoutY="567.0" prefHeight="25.0" prefWidth="88.0" AnchorPane.topAnchor="567.0">
+                       <items>
+                           <FXCollections fx:factory="observableArrayList">
+                               <String fx:value="PLN" />
+                               <String fx:value="EUR" />
+                               <String fx:value="USD" />
+                           </FXCollections>
+                       </items>
+                      </ChoiceBox>
+                      <CheckBox fx:id="addAddress" layoutX="911.0" layoutY="174.0" mnemonicParsing="false" onAction="#onAddAddressAction" text="Rezerwacja z podstawieniem">
+                         <font>
+                            <Font name="Arial" size="18.0" />
+                         </font></CheckBox>
+                      <DatePicker fx:id="startDatePicker" editable="false" layoutX="975.0" layoutY="500.0" />
+                      <DatePicker fx:id="endDatePicker" editable="false" layoutX="977.0" layoutY="592.0" />
+                      <Slider fx:id="toSlider" layoutX="58.0" layoutY="511.0" onMouseMoved="#onToSliderAction" prefHeight="14.0" prefWidth="190.0" AnchorPane.topAnchor="511.0" />
+                      <Label fx:id="errorStartDate" alignment="TOP_CENTER" layoutX="935.0" layoutY="526.0" prefHeight="40.0" prefWidth="254.0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="Arial Bold Italic" size="12.0" />
+                     </font></Label>
+                      <Button id="myButton" fx:id="setNewReservation" layoutX="1013.0" layoutY="666.0" mnemonicParsing="false" onAction="#onSetNewReservationButton" text="Zarezerwuj">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font></Button>
+                      <TableView fx:id="carTable" layoutX="307.0" layoutY="116.0" onMouseClicked="#onSelectedRow" opacity="0.85" prefHeight="620.0" prefWidth="587.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="307.0" AnchorPane.rightAnchor="306.0" AnchorPane.topAnchor="116.0">
+                        <columns>
+                            <TableColumn fx:id="idCarCol" editable="false" prefWidth="75.0" resizable="false" text="Numer Auta" />
+                            <TableColumn fx:id="brandCol" editable="false" resizable="false" text="Marka" />
+                            <TableColumn fx:id="modelCol" prefWidth="104.0" resizable="false" text="Model" />
+                            <TableColumn fx:id="yearCol" editable="false" prefWidth="64.0" resizable="false" text="Rocznik" />
+                            <TableColumn fx:id="seatsCol" editable="false" prefWidth="101.0" resizable="false" text="Liczba miejsc" />
+                            <TableColumn fx:id="priceCol" editable="false" prefWidth="89.0" resizable="false" text="Cena za dzień" />
+                            <TableColumn fx:id="currencyCol" editable="false" minWidth="8.0" prefWidth="73.0" resizable="false" text="Waluta" />
+                        </columns>
+                      </TableView>
+                      <Label layoutX="941.0" layoutY="31.0" text="Wybrany samochód:">
+                         <font>
+                            <Font name="Arial" size="24.0" />
+                         </font>
+                      </Label>
+                      <Label fx:id="carLabel" alignment="CENTER" layoutX="937.0" layoutY="77.0" prefHeight="79.0" prefWidth="227.0" textAlignment="CENTER" wrapText="true">
+                         <font>
+                            <Font name="Arial" size="20.0" />
+                         </font>
+                      </Label>
+                  <ComboBox fx:id="yearFilter" layoutX="78.0" layoutY="300.0" prefWidth="150.0" />
+                  <ComboBox fx:id="seatsFilter" layoutX="78.0" layoutY="361.0" prefWidth="150.0" />
+                  <Button id="myButton" fx:id="clearFilters" layoutX="14.0" layoutY="629.0" mnemonicParsing="false" onAction="#onClearFiltersButton" prefHeight="21.0" prefWidth="120.0" text="Wyczyść Filtry">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Button>
+                  <Label fx:id="errorEndDate" alignment="TOP_CENTER" layoutX="929.0" layoutY="617.0" prefHeight="34.0" prefWidth="271.0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="Arial Bold Italic" size="12.0" />
+                     </font></Label>
+                  <Label fx:id="errorRes" alignment="TOP_CENTER" layoutX="956.0" layoutY="697.0" prefHeight="17.0" prefWidth="215.0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="Arial Bold Italic" size="12.0" />
+                     </font></Label>
+                  <TextArea fx:id="addressText" disable="true" layoutX="953.0" layoutY="206.0" opacity="0.0" prefHeight="103.0" prefWidth="200.0" promptText="Podaj adres do podstawienia Auta" />
+                  <TableView fx:id="carDatesTable" layoutX="961.0" layoutY="351.0" prefHeight="110.0" prefWidth="202.0">
+                    <columns>
+                      <TableColumn fx:id="startCarDatesCol" prefWidth="98.0" text="Od" />
+                      <TableColumn fx:id="endCarDatesCol" prefWidth="101.0" text="Do" />
+                    </columns>
+                  </TableView>
+                  <Label fx:id="addressError" alignment="TOP_CENTER" layoutX="931.0" layoutY="304.0" prefHeight="17.0" prefWidth="244.0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="943.0" layoutY="325.0" text="Samochód jest niedostępny:">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="448.0" layoutY="58.0" text="Lista Samochodów">
+                     <font>
+                        <Font name="Arial" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="134.0" layoutY="146.0" text="Filtry">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1044.0" layoutY="479.0" text="Od">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1050.0" layoutY="569.0" text="Do">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+
+
+                   </children>
+                </AnchorPane>
+                            </content>
+                        </Tab>
+      <Tab text="Edytuj Konto">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="498.0" layoutY="110.0" text="Edytuj Konto">
+                     <font>
+                        <Font name="Arial" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="394.0" layoutY="190.0" text="Dane Osobiste">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font></Label>
+                  <Label layoutX="666.0" layoutY="190.0" text="Login i Hasło">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font></Label>
+                  <TextField fx:id="name" alignment="TOP_CENTER" layoutX="383.0" layoutY="227.0" promptText="IMIĘ" />
+                  <Label fx:id="nameError" alignment="TOP_CENTER" layoutX="355.0" layoutY="258.0" prefHeight="17.0" prefWidth="206.0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="Arial Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="surname" alignment="TOP_CENTER" layoutX="384.0" layoutY="292.0" promptText="NAZWISKO" />
+                  <Label fx:id="surnameError" alignment="TOP_CENTER" layoutX="337.0" layoutY="330.0" prefHeight="17.0" prefWidth="243.0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="Arial Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="mail" alignment="TOP_CENTER" layoutX="384.0" layoutY="359.0" promptText="MAIL" />
+                  <Label fx:id="mailError" alignment="TOP_CENTER" layoutX="337.0" layoutY="384.0" prefHeight="39.0" prefWidth="244.0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="Arial Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="phone" alignment="TOP_CENTER" layoutX="384.0" layoutY="423.0" promptText="PHONE" />
+                  <Label fx:id="phoneError" alignment="TOP_CENTER" layoutX="363.0" layoutY="448.0" prefHeight="39.0" prefWidth="193.0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="Arial Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="idNumber" alignment="TOP_CENTER" layoutX="383.0" layoutY="487.0" promptText="NR DOWODU" />
+                  <Label fx:id="idNumberError" alignment="TOP_CENTER" layoutX="340.0" layoutY="512.0" prefHeight="17.0" prefWidth="240.0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="Arial Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="currentLogin" alignment="TOP_CENTER" layoutX="649.0" layoutY="228.0" promptText="OBECNY LOGIN" />
+                  <Label fx:id="currentLoginError" alignment="TOP_CENTER" layoutX="650.0" layoutY="259.0" prefHeight="17.0" prefWidth="147.0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="Arial Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="login" alignment="TOP_CENTER" layoutX="649.0" layoutY="293.0" promptText="LOGIN" />
+                  <Label fx:id="loginError" alignment="TOP_CENTER" layoutX="650.0" layoutY="323.0" prefHeight="17.0" prefWidth="147.0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="Arial Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="currentPassword" alignment="TOP_CENTER" layoutX="649.0" layoutY="360.0" promptText="OBECNE HASŁO" />
+                  <Label fx:id="currentPasswordError" alignment="TOP_CENTER" layoutX="611.0" layoutY="385.0" prefHeight="17.0" prefWidth="226.0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="Arial Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="newPassword" alignment="TOP_CENTER" layoutX="649.0" layoutY="424.0" promptText="NOWE HASŁO" />
+                  <Label fx:id="newPasswordError" alignment="TOP_CENTER" layoutX="635.0" layoutY="447.0" prefHeight="43.0" prefWidth="178.0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="Arial Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="confirmPassword" alignment="TOP_CENTER" layoutX="650.0" layoutY="488.0" promptText="POTWIERDŹ HASŁO" />
+                  <Label fx:id="confirmPasswordError" alignment="TOP_CENTER" layoutX="628.0" layoutY="513.0" prefHeight="17.0" prefWidth="193.0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="Arial Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button id="myButton" fx:id="editClient" layoutX="545.0" layoutY="575.0" mnemonicParsing="false" onAction="#onEditClientButton" text="Zmień Dane">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Button>
+               </children></AnchorPane>
+        </content>
+      </Tab>
+                    </tabs>
+</TabPane>
